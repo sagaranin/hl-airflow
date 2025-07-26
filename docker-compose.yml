@@ -74,10 +74,10 @@ x-airflow-common:
     # If you want to use it, outcomment it and replace airflow.cfg with the name of your config file
     # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
   volumes:
-    - /data/hdd/volumes/airflow/dags:/opt/airflow/dags
-    - /data/hdd/volumes/airflow/logs:/opt/airflow/logs
-    - /data/hdd/volumes/airflow/config:/opt/airflow/config
-    - /data/hdd/volumes/airflow/plugins:/opt/airflow/plugins
+    - airflow-dags-volume:/opt/airflow/dags
+    - airflow-logs-volume:/opt/airflow/logs
+    - airflow-config-volume:/opt/airflow/config
+    - airflow-plugins-volume:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -287,3 +287,7 @@ services:
 
 volumes:
   postgres-db-volume:
+  airflow-dags-volume:
+  airflow-logs-volume:
+  airflow-config-volume:
+  airflow-plugins-volume:
